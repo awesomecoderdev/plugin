@@ -3,6 +3,8 @@ import Main from './components/Main';
 import Timetable from './components/Timetable';
 import Time from './components/Time';
 
+// console.log("showTimeTable",showTimeTable);
+
 function App() {
 
   const [isShowing, setIsShowing] = useState(false)
@@ -10,8 +12,7 @@ function App() {
   return (
     <Fragment>
       <div className="m-5">
-        {/* <Main /> */}
-        <Time />
+        {showTimeTable ? <Time /> : <Main />}
       </div>
     </Fragment>
   );

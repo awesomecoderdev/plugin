@@ -76,9 +76,9 @@ const Calendar = ({className, startMonth}) => {
           <div className="calendar_inner">
               <div className="calendar_relative">
                   <div className="calendar_header">
-                    <h2 className="calendar_h2">
+                    <span className="calendar_h2">
                       {format(firstDayCurrentMonth, 'MMMM yyyy')}
-                    </h2>
+                    </span>
                     <button
                       type="button"
                       onClick={previousMonth}
@@ -117,9 +117,12 @@ const Calendar = ({className, startMonth}) => {
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    setSelectedDay(day);
-                                    setSchedule(day);
-                                }}
+                                    // setSelectedDay(day);
+                                    // setSchedule(day);
+                                    const dy = format(day, 'd-MM-yyyy');
+                                    const redirect = `${window.location.origin}${window.location.pathname}?start=${dy}`;
+                                    window.location = redirect;
+                                  }}
                                   className={classNames(
                                     "calender_default_btn", // default class
                                     ((workerSchedule.includes(format(day, 'yyyy-MM-dd')) && today < day ) && 'selected_date_btn'), // disable previous date to select
