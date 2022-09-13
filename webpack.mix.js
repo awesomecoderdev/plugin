@@ -12,18 +12,18 @@ const mix = require("laravel-mix");
 
 mix
   .webpackConfig({ stats: { children: false } })
-  .js("src/backend/js/backend.js", "backend/js")
-  .js("src/backend/js/metabox.js", "backend/js")
-  .postCss("src/backend/css/backend.css", "backend/css", [
-    require("postcss-import"),
-    require("tailwindcss"),
-    require("autoprefixer"),
-  ])
-  .postCss("src/backend/css/metabox.css", "backend/css", [
-    require("postcss-import"),
-    require("tailwindcss"),
-    require("autoprefixer"),
-  ])
+  // .js("src/backend/js/backend.js", "backend/js")
+  // .js("src/backend/js/metabox.js", "backend/js")
+  // .postCss("src/backend/css/backend.css", "backend/css", [
+  //   require("postcss-import"),
+  //   require("tailwindcss"),
+  //   require("autoprefixer"),
+  // ])
+  // .postCss("src/backend/css/metabox.css", "backend/css", [
+  //   require("postcss-import"),
+  //   require("tailwindcss"),
+  //   require("autoprefixer"),
+  // ])
   .postCss("src/frontend/css/frontend.css", "frontend/css", [
     require("postcss-import"),
     require("tailwindcss"),

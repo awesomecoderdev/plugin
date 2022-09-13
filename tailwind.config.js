@@ -1,15 +1,15 @@
 module.exports = {
   content: [
-    "./backend/views/*.php",
-    "./backend/views/metabox/*.php",
+    // "./backend/views/*.php",
+    // "./backend/views/metabox/*.php",
     "./frontend/views/*.php",
     "./frontend/views/shortcode/*.php",
-    "./frontend/views/single/*.php",
-    "./frontend/views/auth/*.php",
-    "./src/backend/js/components/**/*.{js,ts,jsx,tsx}",
+    // "./frontend/views/single/*.php",
+    // "./frontend/views/auth/*.php",
+    // "./src/backend/js/components/**/*.{js,ts,jsx,tsx}",
     "./src/frontend/js/components/**/*.{js,ts,jsx,tsx}",
     "./src/frontend/js/**/*.{js,ts,jsx,tsx}",
-    "./src/backend/js/**/*.{js,ts,jsx,tsx}",
+    // "./src/backend/js/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: "class", // or 'media' or 'class'
   theme: {

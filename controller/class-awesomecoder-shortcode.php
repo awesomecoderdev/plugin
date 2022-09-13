@@ -64,13 +64,6 @@ class Awesomecoder_Shortcode
 	 */
 	public static function awesomecoder_shortcode_callback($atts = array(), $content = null, $tag = '')
 	{
-		$layouts = [
-			"an1",
-			"apkdone",
-			"apkmodule",
-			"kingmodapk",
-			"techbigs",
-		];
 		$awesomecoder = shortcode_atts(array(
 			"posts_per_page" => 12,
 			"paginate" => true,
@@ -79,16 +72,11 @@ class Awesomecoder_Shortcode
 		), $atts);
 
 		ob_start();
-		if ($awesomecoder["layout"] != null && in_array($awesomecoder["layout"], $layouts)) {
-			include_once AWESOMECODER_PATH . 'frontend/views/shortcode/' . strtolower($awesomecoder["layout"]) . '.php';
-		} else {
-			include_once AWESOMECODER_PATH . 'frontend/views/shortcode/apps.php';
-		}
+		include_once AWESOMECODER_PATH . 'frontend/views/shortcode/dates.php';
 		$apps = ob_get_contents();
 		ob_end_clean();
 		return $apps;
 	}
-
 
 	/**
 	 *  It is the shortcode functions of the template
@@ -118,7 +106,7 @@ class Awesomecoder_Shortcode
 	 */
 	public static function run()
 	{
-		add_shortcode('ac_playstore_apps', [__CLASS__, 'awesomecoder_shortcode_callback']);
+		add_shortcode('awesomecoder_dates', [__CLASS__, 'awesomecoder_shortcode_callback']);
 		add_shortcode('ac_playstore_single_apps', [__CLASS__, 'awesomecoder_single_shortcode_callback']);
 	}
 }
