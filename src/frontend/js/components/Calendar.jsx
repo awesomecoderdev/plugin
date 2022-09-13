@@ -79,7 +79,7 @@ const Calendar = ({className, startMonth}) => {
                     <span className="calendar_h2">
                       {format(firstDayCurrentMonth, 'MMMM yyyy')}
                     </span>
-                    <button
+                    {/* <button
                       type="button"
                       onClick={previousMonth}
                       className="calendar_next_prev_btn"
@@ -94,7 +94,7 @@ const Calendar = ({className, startMonth}) => {
                     >
                       <span className="sr-only">Next month</span>
                       <ChevronRightIcon className="next_prev_icon" aria-hidden="true" />
-                    </button>
+                    </button> */}
                   </div>
                   <div className="calendar_week_names">
                     <div>S</div>

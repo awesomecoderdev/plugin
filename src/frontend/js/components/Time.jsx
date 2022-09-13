@@ -159,7 +159,7 @@ const Time = () => {
                               </div>
                             </div>
 
-                            <div className="grid grid-cols-4 mt-2 text-sm text-slate-500">
+                            <div className="grid grid-flow-col grid-rows-6 mt-2 text-sm text-slate-500">
                               {hours.map((hour, index) => {
                                   var haveSchedule = false;
                                   doctorSchedule.filter(hr => {
@@ -184,10 +184,12 @@ const Time = () => {
                                             className={classNames(
                                               "mx-auto flex h-12 w-12 items-center justify-center rounded-full font-normal font-poppins", // default class
                                               (haveSchedule && (currentHour < hour)) && 'bg-yellow-400 text-white pointer-events-none', // disable previous date to select
+                                              // (haveSchedule && (currentHour < hour)) && 'bg-yellow-400 text-white pointer-events-none', // disable previous date to select
                                               // isSameHour(currentHour,hour) && 'bg-yellow-500 text-white pointer-events-none', // set current date color
                                               !(currentHour > hour) && !isSameHour(currentHour,hour) && 'hover:bg-gray-300', // hover to normal time item
                                               !isSameHour(currentHour,hour) && (currentHour > hour) && 'bg-slate-500/50 text-white opacity-70 pointer-events-none', // disable previous date to select
-                                              ((currentHour < hour) && !haveSchedule || isSameHour(currentHour,hour)) && 'text-white bg-red-500/50  hover:bg-red-500/70', // hover to normal time item
+                                              // ((currentHour < hour) && !haveSchedule || isSameHour(currentHour,hour)) && 'text-white bg-red-500/50  hover:bg-red-500/70', // hover to normal time item
+                                              ((currentHour < hour) && !haveSchedule || isSameHour(currentHour,hour)) && 'bg-gray-100 hover:bg-gray-300', // hover to normal time item
                                             )}
                                           >
                                             <time dateTime={hour} className="pointer-events-none">

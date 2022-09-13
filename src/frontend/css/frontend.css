@@ -14,7 +14,7 @@ body{
     @apply w-full relative max-w-4xl mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4;
 }
 .calendar_list_item{
-    @apply rounded-lg relative w-full bg-white shadow-md;
+    @apply rounded-lg relative w-full bg-white shadow-md border border-gray-400/20;
 }
 /* calendar */
 .calendar_date_list{

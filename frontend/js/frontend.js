@@ -2562,8 +2562,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @heroicons/react/solid */ "./node_modules/@heroicons/react/solid/esm/ChevronLeftIcon.js");
-/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @heroicons/react/solid */ "./node_modules/@heroicons/react/solid/esm/ChevronRightIcon.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/startOfToday/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parse/index.js");
@@ -2572,10 +2570,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/endOfWeek/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/endOfMonth/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/add/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getDay/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isEqual/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isToday/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isSameMonth/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getDay/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isEqual/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isToday/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isSameMonth/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -2674,34 +2672,12 @@ var Calendar = function Calendar(_ref) {
       className: "calendar_inner",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "calendar_relative",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "calendar_header",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
             className: "calendar_h2",
             children: (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(firstDayCurrentMonth, 'MMMM yyyy')
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
-            type: "button",
-            onClick: previousMonth,
-            className: "calendar_next_prev_btn",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-              className: "sr-only",
-              children: "Previous month"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_11__["default"], {
-              className: "next_prev_icon",
-              "aria-hidden": "true"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
-            onClick: nextMonth,
-            type: "button",
-            className: "calendar_next_prev_btn",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-              className: "sr-only",
-              children: "Next month"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_12__["default"], {
-              className: "next_prev_icon",
-              "aria-hidden": "true"
-            })]
-          })]
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "calendar_week_names",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -2723,7 +2699,7 @@ var Calendar = function Calendar(_ref) {
           className: "calendar_date_list",
           children: days.map(function (day, dayIdx) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-              className: classNames(dayIdx === 0 && colStartClasses[(0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(day)], 'padding_y'),
+              className: classNames(dayIdx === 0 && colStartClasses[(0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(day)], 'padding_y'),
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 type: "button",
                 onClick: function onClick() {
@@ -2735,9 +2711,9 @@ var Calendar = function Calendar(_ref) {
                 },
                 className: classNames("calender_default_btn", // default class
                 workerSchedule.includes((0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(day, 'yyyy-MM-dd')) && today < day && 'selected_date_btn', // disable previous date to select
-                (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(day, today) && (0,date_fns__WEBPACK_IMPORTED_MODULE_15__["default"])(day) && 'current_date_btn', // set current date color
+                (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(day, today) && (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(day) && 'current_date_btn', // set current date color
                 today > day && 'previous_next_month_btn', // disable previous date to select
-                !(0,date_fns__WEBPACK_IMPORTED_MODULE_16__["default"])(day, firstDayCurrentMonth) && 'previous_next_month_btn' // set different month date color
+                !(0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(day, firstDayCurrentMonth) && 'previous_next_month_btn' // set different month date color
                 ),
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("time", {
                   dateTime: (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(day, 'yyyy-MM-dd'),
@@ -3118,7 +3094,7 @@ var Time = function Time() {
                       children: table.title
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                    className: "grid grid-cols-4 mt-2 text-sm text-slate-500",
+                    className: "grid grid-flow-col grid-rows-6 mt-2 text-sm text-slate-500",
                     children: hours.map(function (hour, index) {
                       var haveSchedule = false;
                       doctorSchedule.filter(function (hr) {
@@ -3141,10 +3117,12 @@ var Time = function Time() {
                           id: "".concat(table.group + (0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(hour, "byyyyMMddh")),
                           className: classNames("mx-auto flex h-12 w-12 items-center justify-center rounded-full font-normal font-poppins", // default class
                           haveSchedule && currentHour < hour && 'bg-yellow-400 text-white pointer-events-none', // disable previous date to select
+                          // (haveSchedule && (currentHour < hour)) && 'bg-yellow-400 text-white pointer-events-none', // disable previous date to select
                           // isSameHour(currentHour,hour) && 'bg-yellow-500 text-white pointer-events-none', // set current date color
                           !(currentHour > hour) && !(0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(currentHour, hour) && 'hover:bg-gray-300', // hover to normal time item
                           !(0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(currentHour, hour) && currentHour > hour && 'bg-slate-500/50 text-white opacity-70 pointer-events-none', // disable previous date to select
-                          (currentHour < hour && !haveSchedule || (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(currentHour, hour)) && 'text-white bg-red-500/50  hover:bg-red-500/70' // hover to normal time item
+                          // ((currentHour < hour) && !haveSchedule || isSameHour(currentHour,hour)) && 'text-white bg-red-500/50  hover:bg-red-500/70', // hover to normal time item
+                          (currentHour < hour && !haveSchedule || (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(currentHour, hour)) && 'bg-gray-100 hover:bg-gray-300' // hover to normal time item
                           ),
                           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("time", {
                             dateTime: hour,
