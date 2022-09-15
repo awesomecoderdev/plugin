@@ -29,18 +29,18 @@ import axios from "axios";
 const today = startOfToday();
 export const scheduleJson = [];
 scheduleJson["a"] = eachHourOfInterval({
-  start: add(today, { days:0, hours: 21 }),
-  end: add(today, { days:0, hours: 25 }),
+  start: add(today, { days:0, hours: 20 }),
+  end: add(today, { days:0, hours: 21 }),
 });
 scheduleJson["b"] = eachHourOfInterval({
-  start: add(today, { days:0, hours: 5 }),
-  end: add(today, { days:0, hours: 7 }),
+  start: add(today, { days:0, hours: 21 }),
+  end: add(today, { days:0, hours: 22 }),
 });
 scheduleJson["h"] = eachHourOfInterval({
-  start: add(today, { days:0, hours: 11 }),
-  end: add(today, { days:0, hours: 15 }),
+  start: add(today, { days:0, hours: 23 }),
+  end: add(today, { days:0, hours: 24 }),
 });
 
 export default {
-    scheduleJson,
+  scheduleJson,
 }

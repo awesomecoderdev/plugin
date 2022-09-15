@@ -1,7 +1,7 @@
 import React, { Component, Fragment, useState, useEffect } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { DotsVerticalIcon } from "@heroicons/react/outline";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
+import { Menu, Transition, Tab, Popover, } from "@headlessui/react";
+import { DotsVerticalIcon, PlusCircleIcon } from "@heroicons/react/outline";
+import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import {
     add,
     startOfDay,
@@ -157,8 +157,28 @@ const Time = () => {
         title: "Pinnwand",
         component: "Pinnwand",
       }
-    ]
+    ];
     const [currentTab, setCurrentTab] = useState("menu");
+    const solutions = [
+      {
+        name: 'Insights',
+        description: 'Measure actions your users take',
+        href: '##',
+        icon: IconOne,
+      },
+      {
+        name: 'Automations',
+        description: 'Create your own targeted content',
+        href: '##',
+        icon: IconTwo,
+      },
+      {
+        name: 'Reports',
+        description: 'Keep track of your growth',
+        href: '##',
+        icon: IconThree,
+      },
+    ]
 
     return (
       <Fragment>
@@ -185,25 +205,84 @@ const Time = () => {
             </button>
           </div>
         </div>
-
-
-        <div className="relative flex justify-between">
           <div className="relative flex w-full justify-center items-center">
-              <div className="relative w-full max-w-5xl grid lg:grid-cols-3 md:gird-col-2 grid-cols-1 md:gap-5 gap-3">
+              <div className="relative w-full max-w-7xl grid lg:grid-cols-4 md:gird-col-2 sm:grid-cols-2 lg:gap-5 md:gap-3 gap-3">
               {timeTables.map((table, tableIndex) => {
                 const doctorSchedule = scheduleJson[table.group];
+
                 return(
-                  <div key={table.group} className="rounded-lg relative w-full bg-white shadow-md border border-gray-400/20 max-w-xs">
+                  <div key={table.group} className="rounded-lg relative w-full bg-white shadow-md border border-gray-400/20 lg:max-w-xs max-w-full">
                     <div className={"w-full px-3 py-4 m-0"} >
                       <div className="md:divide-x md:divide-transparent">
                           <div className="relative">
                               <div className="flex items-center">
-                                <div className="my-2 font-semibold font-poppins text-lg w-full text-center leading-4 text-gray-500">
+                                <div className="my-2 font-semibold font-poppins text-sm w-full text-start leading-4 text-gray-500">
                                   {table.title}
                                 </div>
+                                <div className="relative w-auto ">
+                                <Popover className="relative">
+                                  {({ open }) => (
+                                    <>
+                                      <Popover.Button
+                                        onClick={processSubmit}
+                                        className={`${open ? '' : 'text-opacity-90'} mr-4 px-3 py-2 font-poppins font-semibold text-sm text-white rounded bg-primary-400`}
+                                      >
+                                      <PlusCircleIcon className="h-5 w-5" />
+                                      </Popover.Button>
+                                      <Transition
+                                        as={Fragment}
+                                        enter="transition ease-out duration-200"
+                                        enterFrom="opacity-0 translate-y-1"
+                                        enterTo="opacity-100 translate-y-0"
+                                        leave="transition ease-in duration-150"
+                                        leaveFrom="opacity-100 translate-y-0"
+                                        leaveTo="opacity-0 translate-y-1"
+                                      >
+                                        <Popover.Panel className="absolute left-1/2 top-0 z-10 mt-3 bg-white w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-md">
+                                          <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 p-3">
+                                            <div className="grid">
+                                              <div className="relative w-full">
+                                                <div className="relative">
+                                                  <span>Tag : {format(today, 'yyyy-MM-dd')}</span>
+                                                  <br />
+                                                  <span>Tag : {format(today, 'yyyy-MM-dd')}</span>
+                                                  <br />
+                                                  <span>Tag : {format(today, 'yyyy-MM-dd')}</span>
+                                                  <br />
+                                                </div>
+                                                <select name="" id="">
+                                                  <option value="">Demo 1</option>
+                                                  <option value="">Demo 2</option>
+                                                </select>
+                                              </div>
+                                              <div className="relative w-full">
+                                                <div className="flex justify-end">
+                                                  <button className="text-sm font-semibold font-poppins text-gray-500 px-2 py-1 mx-1 bg-red-400">Ja</button>
+                                                  <button className="text-sm font-semibold font-poppins text-gray-500 px-2 py-1 mx-1 bg-primary-400">Nein</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </Popover.Panel>
+                                      </Transition>
+                                    </>
+                                  )}
+                                </Popover>
+                          </div>
                               </div>
                               <div className="grid grid-flow-col grid-rows-6 gap-1.5 mt-2 text-sm text-white ">
-                                {hours.map((hour, hrIndex) => (
+                                {hours.map((hour, hrIndex) =>{
+                                  var haveSchedule = false;
+                                  doctorSchedule.filter(hr => {
+                                    if(isSameHour(hr,hour)){
+                                      // console.log(hour);
+                                      haveSchedule = true;
+                                      return true;
+                                    }
+                                    return false;
+                                  });
+
+                                  return (
                                     <button
                                       key={hrIndex}
                                       type="button"
@@ -217,36 +296,144 @@ const Time = () => {
                                         (selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && table.group == "a") && 'bg-yellow-600 text-white', // disable previous date to select
                                         (selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && table.group == "b") && 'bg-yellow-500 text-white', // disable previous date to select
                                         (selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && table.group == "h") && 'bg-slate-400 text-white', // disable previous date to select
+                                        (haveSchedule && table.group == "a" ) && 'bg-yellow-600 text-white',
+                                        (haveSchedule && table.group == "b" ) && 'bg-yellow-500 text-white',
+                                        (haveSchedule && table.group == "h" ) && 'bg-slate-400 text-white',
                                         !(currentHour > hour) && !isSameHour(currentHour,hour) && 'hover:bg-gray-300', // hover to normal time item
                                         !isSameHour(currentHour,hour) && (currentHour > hour) && 'bg-slate-500/50 text-white opacity-70 pointer-events-none', // disable previous date to select
-                                        ((currentHour <= hour) || isSameHour(currentHour,hour)) && !selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && 'bg-red-400 hover:bg-red-500', // hover to normal time item
+                                        ((currentHour <= hour) || isSameHour(currentHour,hour)) && !haveSchedule && !selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && 'bg-red-400 hover:bg-red-500', // hover to normal time item
                                       )}
                                     >
                                       <time dateTime={hour} className="pointer-events-none">
                                         {getHours(hour) <10 ? "0"+getHours(hour)+":00" : getHours(hour)+":00"}
                                       </time>
                                     </button>
-                                ))}
+                                )
+                                })}
                               </div>
-                          </div>
-                          <div className="relative pt-4 w-full flex justify-end">
-                            <button
-                            onClick={processSubmit}
-                            className="mr-4 px-3 py-2 font-poppins font-semibold text-sm text-white rounded bg-primary-400">Submit</button>
                           </div>
                       </div>
                     </div>
                   </div>
                 )
               })}
+              <div className="rounded-lg relative w-full bg-white shadow-md border border-gray-400/20  lg:max-w-xs max-w-full">
+                <div className={"w-full px-3 py-4 m-0"} >
+                  <Tab.Group>
+                        <Tab.List className="flex justify-between bg-white overflow-x-auto overflow-y-hidden">
+                          {tabs.map((tab) => (
+                            <Tab
+                              key={tab.id}
+                              className={({ selected }) =>
+                                classNames(
+                                  'text-sm font-poppins bg-slate-50  px-2 py-1 hover:bg-white',
+                                  // 'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
+                                  selected
+                                    ? 'bg-gray-300/50 border shadow-lg text-gray-500  hover:text-gray-600 border-slate-500/10'
+                                    : 'text-gray-500 hover:text-gray-600 border border-gray-500/10'
+                                )
+                              }
+                            >
+                              {tab.title}
+                            </Tab>
+                          ))}
+                        </Tab.List>
+                        <Tab.Panels className="mt-2">
+                          {tabs.map((tab, idx) => (
+                            <Tab.Panel
+                              key={idx}
+                              className={"p-2"}
+                            >
+                              {tab.component}
+                            </Tab.Panel>
+                          ))}
+                        </Tab.Panels>
+                      </Tab.Group>
+                  </div>
+              </div>
             </div>
-          </div>
-          <div className="relative max-w-xs p-3">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis eum culpa vel quod magnam aspernatur beatae sint fugit ipsum, quas necessitatibus earum libero similique illum quae consequuntur repudiandae velit voluptatibus!
-          </div>
         </div>
       </Fragment>
     );
 }
 
 export default Time;
+
+function IconOne() {
+  return (
+    <svg
+      width="48"
+      height="48"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="48" height="48" rx="8" fill="#FFEDD5" />
+      <path
+        d="M24 11L35.2583 17.5V30.5L24 37L12.7417 30.5V17.5L24 11Z"
+        stroke="#FB923C"
+        strokeWidth="2"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M16.7417 19.8094V28.1906L24 32.3812L31.2584 28.1906V19.8094L24 15.6188L16.7417 19.8094Z"
+        stroke="#FDBA74"
+        strokeWidth="2"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M20.7417 22.1196V25.882L24 27.7632L27.2584 25.882V22.1196L24 20.2384L20.7417 22.1196Z"
+        stroke="#FDBA74"
+        strokeWidth="2"
+      />
+    </svg>
+  )
+}
+
+function IconTwo() {
+  return (
+    <svg
+      width="48"
+      height="48"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="48" height="48" rx="8" fill="#FFEDD5" />
+      <path
+        d="M28.0413 20L23.9998 13L19.9585 20M32.0828 27.0001L36.1242 34H28.0415M19.9585 34H11.8755L15.9171 27"
+        stroke="#FB923C"
+        strokeWidth="2"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M18.804 30H29.1963L24.0001 21L18.804 30Z"
+        stroke="#FDBA74"
+        strokeWidth="2"
+      />
+    </svg>
+  )
+}
+
+function IconThree() {
+  return (
+    <svg
+      width="48"
+      height="48"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="48" height="48" rx="8" fill="#FFEDD5" />
+      <rect x="13" y="32" width="2" height="4" fill="#FDBA74" />
+      <rect x="17" y="28" width="2" height="8" fill="#FDBA74" />
+      <rect x="21" y="24" width="2" height="12" fill="#FDBA74" />
+      <rect x="25" y="20" width="2" height="16" fill="#FDBA74" />
+      <rect x="29" y="16" width="2" height="20" fill="#FB923C" />
+      <rect x="33" y="12" width="2" height="24" fill="#FB923C" />
+    </svg>
+  )
+}
