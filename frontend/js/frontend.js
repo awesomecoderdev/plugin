@@ -2732,67 +2732,6 @@ var Calendar = function Calendar(_ref) {
 
 /***/ }),
 
-/***/ "./src/frontend/js/components/Data.jsx":
-/*!*********************************************!*\
-  !*** ./src/frontend/js/components/Data.jsx ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   "scheduleJson": () => (/* binding */ scheduleJson)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/startOfToday/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/eachHourOfInterval/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/add/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-
-
-
-
-var today = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])();
-var scheduleJson = [];
-scheduleJson["a"] = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])({
-  start: (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(today, {
-    days: 0,
-    hours: 21
-  }),
-  end: (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(today, {
-    days: 0,
-    hours: 25
-  })
-});
-scheduleJson["b"] = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])({
-  start: (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(today, {
-    days: 0,
-    hours: 5
-  }),
-  end: (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(today, {
-    days: 0,
-    hours: 7
-  })
-});
-scheduleJson["h"] = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])({
-  start: (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(today, {
-    days: 0,
-    hours: 11
-  }),
-  end: (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(today, {
-    days: 0,
-    hours: 15
-  })
-});
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  scheduleJson: scheduleJson
-});
-
-/***/ }),
-
 /***/ "./src/frontend/js/components/Main.jsx":
 /*!*********************************************!*\
   !*** ./src/frontend/js/components/Main.jsx ***!
@@ -2892,21 +2831,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @heroicons/react/solid */ "./node_modules/@heroicons/react/solid/esm/ChevronLeftIcon.js");
-/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @heroicons/react/solid */ "./node_modules/@heroicons/react/solid/esm/ChevronRightIcon.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parse/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/startOfToday/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/add/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/eachHourOfInterval/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/startOfDay/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/endOfDay/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
+/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @heroicons/react/solid */ "./node_modules/@heroicons/react/solid/esm/ChevronLeftIcon.js");
+/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @heroicons/react/solid */ "./node_modules/@heroicons/react/solid/esm/ChevronRightIcon.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parse/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/startOfToday/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/eachHourOfInterval/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/startOfDay/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/endOfDay/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/add/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getHours/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isSameHour/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/getHours/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Data */ "./src/frontend/js/components/Data.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2934,37 +2872,70 @@ var classNames = function classNames() {
   }
 
   return classes.filter(Boolean).join(' ');
-}; // console.log('====================================');
-// console.log("awesomecoderDates",awesomecoderDates);
-// console.log("startFrom",startFrom);
-// var result = parse(startFrom, 'd-M-yyyy', new Date())
-// console.log("result",result);
-// console.log('====================================');
+};
 
+var colStartClasses = ['', 'start-2', 'start-3', 'start-4', 'start-5', 'start-6', 'start-7'];
 
 var Time = function Time() {
-  // new functions
-  var startFromNow = startFrom ? (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(startFrom, 'd-M-yyyy', new Date()) : (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])();
-  var today = startFromNow > (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])() ? startFromNow : (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])(); // const currentHour = new Date(2022, 8, 9, 6, 0);
-  // console.log("currentHour",currentHour);
-
-  var currentHour = new Date();
+  // start old
+  // const today = startOfToday();
+  // const [selectedDay, setSelectedDay] = useState(today)
+  // const [currentMonth, setCurrentMonth] =  useState( format(today, 'MMM-yyyy'))
+  // const firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
+  // const days = eachDayOfInterval({
+  //   start: startOfWeek(firstDayCurrentMonth),
+  //   end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
+  // })
+  // function previousMonth() {
+  //   const firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 })
+  //   setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'))
+  // }
+  // function nextMonth() {
+  //   const firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 })
+  //   setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'))
+  // }
+  // const [workerSchedule, setWorkerSchedule] = useState([]);
+  // function setSchedule(day) {
+  //     const tdy = format(day, 'yyyy-MM-dd');
+  //     console.log(tdy);
+  //     if(workerSchedule.includes(tdy)){
+  //         // console.log("today have schedule");
+  //         workerSchedule.splice(workerSchedule.indexOf(tdy), 1);  //deleting
+  //         setWorkerSchedule(workerSchedule);
+  //     }else{
+  //     //    console.log("today don't  have schedule");
+  //        workerSchedule.push(tdy);
+  //        setWorkerSchedule(workerSchedule)
+  //     }
+  //     console.log(workerSchedule);
+  // }
+  // end old
+  var startFromNow = startFrom ? (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(startFrom, 'd-M-yyyy', new Date()) : (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])();
+  var today = startFromNow > (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])() ? startFromNow : (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
-      selectedSchedule = _useState2[0],
-      setSelectedSchedule = _useState2[1];
+      selectedHour = _useState2[0],
+      setSelectedHour = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(today),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(new Date()),
       _useState4 = _slicedToArray(_useState3, 2),
-      currentDay = _useState4[0],
-      setCurrentDay = _useState4[1]; // const [doctorSchedule, setDoctorSchedule] = useState(scheduleJson[group]);
-  // console.log("doctorSchedule",doctorSchedule);
-  // process got to prev day ->done
+      currentHour = _useState4[0],
+      setCurrentHour = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(today),
+      _useState6 = _slicedToArray(_useState5, 2),
+      currentDay = _useState6[0],
+      setCurrentDay = _useState6[1];
+
+  var firstCurrentHour = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(currentHour, 'MMM-yyyy', new Date());
+  var hours = (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])({
+    start: (0,date_fns__WEBPACK_IMPORTED_MODULE_6__["default"])(currentDay),
+    end: (0,date_fns__WEBPACK_IMPORTED_MODULE_7__["default"])(currentDay)
+  }); // process got to prev day ->done
 
   var previousDay = function previousDay() {
-    var goToPrivDay = (0,date_fns__WEBPACK_IMPORTED_MODULE_6__["default"])(currentDay, {
+    var goToPrivDay = (0,date_fns__WEBPACK_IMPORTED_MODULE_8__["default"])(currentDay, {
       days: -1
     });
     setCurrentDay(goToPrivDay);
@@ -2972,58 +2943,31 @@ var Time = function Time() {
 
 
   var nextDay = function nextDay() {
-    var goToNextDay = (0,date_fns__WEBPACK_IMPORTED_MODULE_6__["default"])(currentDay, {
+    var goToNextDay = (0,date_fns__WEBPACK_IMPORTED_MODULE_8__["default"])(currentDay, {
       days: 1
     });
     setCurrentDay(goToNextDay);
   };
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {// setInterval(() => {
-    //   selectedSchedule.map( schedule => {
-    //     const Ael = document.getElementById(`a${format(schedule,"byyyyMMddh")}`);
-    //     const Bel = document.getElementById(`b${format(schedule,"byyyyMMddh")}`);
-    //     const Hel = document.getElementById(`h${format(schedule,"byyyyMMddh")}`);
-    //     if(Hel){
-    //       if(selectedSchedule.includes(schedule) && !Hel.classList.contains("selected_hour")){
-    //         Hel.classList.add("selected_hour");
-    //       }
-    //     }
-    //     if(Ael){
-    //       if(selectedSchedule.includes(schedule) && !Ael.classList.contains("selected_hour")){
-    //         Ael.classList.add("selected_hour");
-    //       }
-    //     }
-    //     if(Bel){
-    //       if(selectedSchedule.includes(schedule) && !Bel.classList.contains("selected_hour")){
-    //         Bel.classList.add("selected_hour");
-    //       }
-    //     }
-    //   })
-    // });
-  }, [previousDay, nextDay]);
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState8 = _slicedToArray(_useState7, 2),
+      selectedSchedule = _useState8[0],
+      setSelectedSchedule = _useState8[1];
 
-  var setSchedule = function setSchedule(e, schedule, table) {
-    var el = e.target;
-
+  function setSchedule(schedule) {
     if (selectedSchedule.includes(schedule)) {
       // console.log("today have schedule");
       selectedSchedule.splice(selectedSchedule.indexOf(schedule), 1); //deleting
 
-      setSelectedSchedule(selectedSchedule); // el.classList.remove("selected_hour");
+      setSelectedSchedule(selectedSchedule);
     } else {
-      // console.log("today do not  have schedule");
+      //    console.log("today don't  have schedule");
       selectedSchedule.push(schedule);
-      setSelectedSchedule(selectedSchedule); // el.classList.add("selected_hour");
+      setSelectedSchedule(selectedSchedule);
     }
 
-    console.log("adadf ".concat(table), selectedSchedule);
-  }; // hours
-
-
-  var hours = (0,date_fns__WEBPACK_IMPORTED_MODULE_7__["default"])({
-    start: (0,date_fns__WEBPACK_IMPORTED_MODULE_8__["default"])(currentDay),
-    end: (0,date_fns__WEBPACK_IMPORTED_MODULE_9__["default"])(currentDay)
-  });
+    console.log("selectedSchedule", selectedSchedule);
+  }
 
   var processSubmit = function processSubmit() {
     console.log('====================================');
@@ -3031,119 +2975,96 @@ var Time = function Time() {
     console.log('====================================');
   };
 
-  var timeTables = [{
-    title: "Bereitschaftszeit A-Dienst",
-    group: "a"
-  }, {
-    title: "Bereitschaftszeit B-Dienst",
-    group: "b"
-  }, {
-    title: "Bereitschaftszeit H-Dienst",
-    group: "h"
-  }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "w-full relative flex justify-center items-center text-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "max-w-sm w-full py-4 flex justify-between items-center",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
           type: "button",
           onClick: previousDay,
           className: "-my-1.5 flex flex-none items-center justify-center p-1.5 hover:bg-gray-200 bg-gray-300/50 rounded-full text-gray-500 hover:text-gray-600",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
             className: "sr-only",
             children: "Previous month"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_10__["default"], {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_9__["default"], {
             className: "w-5 h-5",
             "aria-hidden": "true"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
           className: "text-2xl mb-0 text-slate-500 font-poppins font-semibold",
-          children: (0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(currentDay, 'd MMMM yyyy')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
+          children: (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(currentDay, 'd MMMM yyyy')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
           onClick: nextDay,
           type: "button",
           className: "-my-1.5 flex flex-none items-center justify-center p-1.5 hover:bg-gray-200 bg-gray-300/50 rounded-full text-gray-500 hover:text-gray-600",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
             className: "sr-only",
             children: "Next month"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_11__["default"], {
             className: "w-5 h-5",
             "aria-hidden": "true"
           })]
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "relative flex w-full  justify-center items-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         className: "relative w-full max-w-5xl grid lg:grid-cols-3 md:gird-col-2 grid-cols-1 md:gap-5 gap-3",
-        children: timeTables.map(function (table, tableIndex) {
-          var doctorSchedule = _Data__WEBPACK_IMPORTED_MODULE_2__.scheduleJson[table.group];
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "rounded-lg relative w-full bg-white shadow-md border border-gray-400/20 max-w-xs",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-              className: "w-full px-3 py-4 m-0",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                className: "md:divide-x md:divide-transparent",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                  className: "relative",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                    className: "flex items-center",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                      className: "my-2 font-semibold font-poppins text-lg w-full text-center leading-4 text-gray-500",
-                      children: table.title
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                    className: "grid grid-flow-col grid-rows-6 mt-2 text-sm text-slate-500",
-                    children: hours.map(function (hour, index) {
-                      var haveSchedule = false;
-                      doctorSchedule.filter(function (hr) {
-                        if ((0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(hr, hour)) {
-                          // console.log(hour);
-                          haveSchedule = true;
-                          return true;
-                        }
-
-                        return false;
-                      });
-                      console.log("selectedSchedule", selectedSchedule);
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                        className: 'py-1.5',
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                          type: "button",
-                          onClick: function onClick(e) {
-                            setSchedule(e, hour, table.group);
-                          },
-                          id: "".concat(table.group + (0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(hour, "byyyyMMddh")),
-                          className: classNames("mx-auto flex h-12 w-12 items-center justify-center rounded-full font-normal font-poppins", // default class
-                          haveSchedule && currentHour < hour && 'bg-yellow-400 text-white pointer-events-none', // disable previous date to select
-                          // (haveSchedule && (currentHour < hour)) && 'bg-yellow-400 text-white pointer-events-none', // disable previous date to select
-                          // isSameHour(currentHour,hour) && 'bg-yellow-500 text-white pointer-events-none', // set current date color
-                          !(currentHour > hour) && !(0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(currentHour, hour) && 'hover:bg-gray-300', // hover to normal time item
-                          !(0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(currentHour, hour) && currentHour > hour && 'bg-slate-500/50 text-white opacity-70 pointer-events-none', // disable previous date to select
-                          // ((currentHour < hour) && !haveSchedule || isSameHour(currentHour,hour)) && 'text-white bg-red-500/50  hover:bg-red-500/70', // hover to normal time item
-                          (currentHour < hour && !haveSchedule || (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(currentHour, hour)) && 'bg-gray-100 hover:bg-gray-300' // hover to normal time item
-                          ),
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("time", {
-                            dateTime: hour,
-                            className: "pointer-events-none",
-                            children: (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(hour) < 10 ? "0" + (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(hour) + ":00" : (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(hour) + ":00"
-                          })
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "rounded-lg relative w-full bg-white shadow-md border border-gray-400/20 max-w-xs",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: "w-full px-3 py-4 m-0",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "md:divide-x md:divide-transparent",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                className: "relative",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "flex items-center",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "my-2 font-semibold font-poppins text-lg w-full text-center leading-4 text-gray-500",
+                    children: "Bereitschaftszeit A-Dienst"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "grid grid-flow-col grid-rows-6 mt-2 text-sm text-slate-500",
+                  children: hours.map(function (hour, hrIndex) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                      className: 'py-1.5',
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+                        type: "button",
+                        onClick: function onClick(e) {
+                          var scheduleKey = "a".concat("-", (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(hour, "MM-dd-yyyy"), "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(hour));
+                          setSchedule(scheduleKey);
+                          setSelectedHour(scheduleKey);
+                        },
+                        className: classNames("mx-auto flex h-12 w-12 items-center justify-center rounded-full font-normal font-poppins", // default class
+                        // (haveSchedule && (currentHour < hour)) && 'bg-yellow-400 text-white pointer-events-none', // disable previous date to select
+                        selectedSchedule.includes("a".concat("-", (0,date_fns__WEBPACK_IMPORTED_MODULE_10__["default"])(hour, "MM-dd-yyyy"), "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(hour))) && 'bg-green-400 text-white', // disable previous date to select
+                        (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(currentHour, hour) && 'bg-yellow-500 text-white pointer-events-none', // set current date color
+                        !(currentHour > hour) && !(0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(currentHour, hour) && 'hover:bg-gray-300', // hover to normal time item
+                        !(0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(currentHour, hour) && currentHour > hour && 'bg-slate-500/50 text-white opacity-70 pointer-events-none' // disable previous date to select
+                        // ((currentHour < hour) && !haveSchedule || isSameHour(currentHour,hour)) && 'bg-gray-100 hover:bg-gray-300', // hover to normal time item
+                        // ((currentHour < hour) && || isSameHour(currentHour,hour)) && 'bg-gray-100 hover:bg-gray-300', // hover to normal time item
+                        ),
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("time", {
+                          dateTime: hour,
+                          className: "pointer-events-none",
+                          children: (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(hour) < 10 ? "0" + (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(hour) + ":00" : (0,date_fns__WEBPACK_IMPORTED_MODULE_12__["default"])(hour) + ":00"
                         })
-                      }, hour.toString());
-                    })
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                  className: "relative pt-4 w-full flex justify-end",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                    onClick: processSubmit,
-                    className: "mr-4 px-3 py-2 font-poppins font-semibold text-sm text-white rounded bg-primary-400",
-                    children: "Submit"
+                      })
+                    }, hour.toString());
                   })
                 })]
-              })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "relative pt-4 w-full flex justify-end",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+                  onClick: processSubmit,
+                  className: "mr-4 px-3 py-2 font-poppins font-semibold text-sm text-white rounded bg-primary-400",
+                  children: "Submit"
+                })
+              })]
             })
-          }, tableIndex);
+          })
         })
       })
     })]

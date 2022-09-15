@@ -1,42 +1,95 @@
-import React, { useEffect, useState, } from "react";
+import React, { Component, Fragment, useState, useEffect } from "react";
+import { Menu, Transition } from "@headlessui/react";
+import { DotsVerticalIcon } from "@heroicons/react/outline";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import {
     add,
-    format,
-    startOfToday,
-    eachHourOfInterval,
     startOfDay,
     endOfDay,
-    parse,
     getHours,
     isSameHour,
+    eachDayOfInterval,
+    eachHourOfInterval,
+    endOfMonth,
+    format,
+    getDay,
+    isEqual,
+    isSameDay,
+    isSameMonth,
+    isToday,
+    parse,
+    parseISO,
+    startOfToday,
+    startOfWeek,
+    endOfWeek,
   } from 'date-fns';
 import axios from "axios";
-import { scheduleJson } from "./Data";
 
 const classNames = (...classes) => {
   return classes.filter(Boolean).join(' ')
 }
 
-// console.log('====================================');
-// console.log("awesomecoderDates",awesomecoderDates);
-// console.log("startFrom",startFrom);
-// var result = parse(startFrom, 'd-M-yyyy', new Date())
-// console.log("result",result);
-// console.log('====================================');
-
+const colStartClasses = [
+    '',
+    'start-2',
+    'start-3',
+    'start-4',
+    'start-5',
+    'start-6',
+    'start-7',
+];
 
 const Time = () => {
-    // new functions
+    // start old
+    // const today = startOfToday();
+    // const [selectedDay, setSelectedDay] = useState(today)
+    // const [currentMonth, setCurrentMonth] =  useState( format(today, 'MMM-yyyy'))
+    // const firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
+
+    // const days = eachDayOfInterval({
+    //   start: startOfWeek(firstDayCurrentMonth),
+    //   end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
+    // })
+
+    // function previousMonth() {
+    //   const firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 })
+    //   setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'))
+    // }
+
+    // function nextMonth() {
+    //   const firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 })
+    //   setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'))
+    // }
+    // const [workerSchedule, setWorkerSchedule] = useState([]);
+
+    // function setSchedule(day) {
+    //     const tdy = format(day, 'yyyy-MM-dd');
+    //     console.log(tdy);
+
+    //     if(workerSchedule.includes(tdy)){
+    //         // console.log("today have schedule");
+    //         workerSchedule.splice(workerSchedule.indexOf(tdy), 1);  //deleting
+    //         setWorkerSchedule(workerSchedule);
+    //     }else{
+    //     //    console.log("today don't  have schedule");
+    //        workerSchedule.push(tdy);
+    //        setWorkerSchedule(workerSchedule)
+    //     }
+    //     console.log(workerSchedule);
+    // }
+    // end old
+
     const startFromNow = startFrom ? parse(startFrom, 'd-M-yyyy', new Date()) : startOfToday();
     const today = startFromNow > startOfToday() ? startFromNow : startOfToday();
-     // const currentHour = new Date(2022, 8, 9, 6, 0);
-    // console.log("currentHour",currentHour);
-    const currentHour = new Date();
-    const [selectedSchedule, setSelectedSchedule] = useState([]);
+    const [selectedHour, setSelectedHour] = useState([]);
+    const [currentHour, setCurrentHour] =  useState(new Date());
     const [currentDay, setCurrentDay] =  useState(today);
-    // const [doctorSchedule, setDoctorSchedule] = useState(scheduleJson[group]);
-    // console.log("doctorSchedule",doctorSchedule);
+    const firstCurrentHour = parse(currentHour, 'MMM-yyyy', new Date())
+
+    const hours = eachHourOfInterval({
+      start: startOfDay(currentDay),
+      end: endOfDay(currentDay),
+    })
 
     // process got to prev day ->done
     const previousDay = () => {
@@ -49,53 +102,20 @@ const Time = () => {
       setCurrentDay(goToNextDay);
     }
 
+    const [selectedSchedule, setSelectedSchedule] = useState([]);
 
-    useEffect(() => {
-      // setInterval(() => {
-      //   selectedSchedule.map( schedule => {
-      //     const Ael = document.getElementById(`a${format(schedule,"byyyyMMddh")}`);
-      //     const Bel = document.getElementById(`b${format(schedule,"byyyyMMddh")}`);
-      //     const Hel = document.getElementById(`h${format(schedule,"byyyyMMddh")}`);
-      //     if(Hel){
-      //       if(selectedSchedule.includes(schedule) && !Hel.classList.contains("selected_hour")){
-      //         Hel.classList.add("selected_hour");
-      //       }
-      //     }
-      //     if(Ael){
-      //       if(selectedSchedule.includes(schedule) && !Ael.classList.contains("selected_hour")){
-      //         Ael.classList.add("selected_hour");
-      //       }
-      //     }
-      //     if(Bel){
-      //       if(selectedSchedule.includes(schedule) && !Bel.classList.contains("selected_hour")){
-      //         Bel.classList.add("selected_hour");
-      //       }
-      //     }
-      //   })
-      // });
-    }, [previousDay,nextDay]);
-
-    const setSchedule = (e,schedule,table) => {
-      const el = e.target;
-      if(selectedSchedule.includes(schedule)){
-        // console.log("today have schedule");
-        selectedSchedule.splice(selectedSchedule.indexOf(schedule), 1);  //deleting
-        setSelectedSchedule(selectedSchedule);
-        // el.classList.remove("selected_hour");
-      }else{
-        // console.log("today do not  have schedule");
+    function setSchedule(schedule) {
+        if(selectedSchedule.includes(schedule)){
+            // console.log("today have schedule");
+            selectedSchedule.splice(selectedSchedule.indexOf(schedule), 1);  //deleting
+            setSelectedSchedule(selectedSchedule);
+        }else{
+        //    console.log("today don't  have schedule");
         selectedSchedule.push(schedule);
-        setSelectedSchedule(selectedSchedule)
-        // el.classList.add("selected_hour");
-      }
-      console.log(`adadf ${table}`,selectedSchedule);
+           setSelectedSchedule(selectedSchedule)
+        }
+        console.log("selectedSchedule",selectedSchedule);
     }
-
-    // hours
-    const hours = eachHourOfInterval({
-      start: startOfDay(currentDay),
-      end: endOfDay(currentDay),
-    })
 
     const processSubmit = () =>{
       console.log('====================================');
@@ -103,24 +123,8 @@ const Time = () => {
       console.log('====================================');
     }
 
-
-    const timeTables = [
-      {
-        title: "Bereitschaftszeit A-Dienst",
-        group: "a",
-      },
-      {
-        title: "Bereitschaftszeit B-Dienst",
-        group: "b",
-      },
-      {
-        title: "Bereitschaftszeit H-Dienst",
-        group: "h",
-      },
-    ]
-
     return (
-      <>
+      <Fragment>
         <div className="w-full relative flex justify-center items-center text-center">
           <div className="max-w-sm w-full py-4 flex justify-between items-center">
             <button
@@ -146,59 +150,44 @@ const Time = () => {
         </div>
         <div className="relative flex w-full  justify-center items-center">
             <div className="relative w-full max-w-5xl grid lg:grid-cols-3 md:gird-col-2 grid-cols-1 md:gap-5 gap-3">
-              {timeTables.map((table, tableIndex) => {
-                const doctorSchedule = scheduleJson[table.group];
-                return(
-                <div key={tableIndex} className="rounded-lg relative w-full bg-white shadow-md border border-gray-400/20 max-w-xs">
+
+            <div className="rounded-lg relative w-full bg-white shadow-md border border-gray-400/20 max-w-xs">
                   <div className={"w-full px-3 py-4 m-0"} >
                     <div className="md:divide-x md:divide-transparent">
                         <div className="relative">
                             <div className="flex items-center">
                               <div className="my-2 font-semibold font-poppins text-lg w-full text-center leading-4 text-gray-500">
-                                {table.title}
+                                Bereitschaftszeit A-Dienst
                               </div>
                             </div>
 
                             <div className="grid grid-flow-col grid-rows-6 mt-2 text-sm text-slate-500">
-                              {hours.map((hour, index) => {
-                                  var haveSchedule = false;
-                                  doctorSchedule.filter(hr => {
-                                    if(isSameHour(hr,hour)){
-                                      // console.log(hour);
-                                      haveSchedule = true;
-                                      return true;
-                                    }
-                                    return false;
-                                  });
-
-                                  console.log("selectedSchedule",selectedSchedule);
-
-                                  return (
-                                      <div key={hour.toString()} className={'py-1.5'}>
-                                          <button
-                                            type="button"
-                                            onClick={(e) => {
-                                              setSchedule(e,hour,table.group);
-                                            }}
-                                            id={`${table.group+format(hour,"byyyyMMddh")}`}
-                                            className={classNames(
-                                              "mx-auto flex h-12 w-12 items-center justify-center rounded-full font-normal font-poppins", // default class
-                                              (haveSchedule && (currentHour < hour)) && 'bg-yellow-400 text-white pointer-events-none', // disable previous date to select
-                                              // (haveSchedule && (currentHour < hour)) && 'bg-yellow-400 text-white pointer-events-none', // disable previous date to select
-                                              // isSameHour(currentHour,hour) && 'bg-yellow-500 text-white pointer-events-none', // set current date color
-                                              !(currentHour > hour) && !isSameHour(currentHour,hour) && 'hover:bg-gray-300', // hover to normal time item
-                                              !isSameHour(currentHour,hour) && (currentHour > hour) && 'bg-slate-500/50 text-white opacity-70 pointer-events-none', // disable previous date to select
-                                              // ((currentHour < hour) && !haveSchedule || isSameHour(currentHour,hour)) && 'text-white bg-red-500/50  hover:bg-red-500/70', // hover to normal time item
-                                              ((currentHour < hour) && !haveSchedule || isSameHour(currentHour,hour)) && 'bg-gray-100 hover:bg-gray-300', // hover to normal time item
-                                            )}
-                                          >
-                                            <time dateTime={hour} className="pointer-events-none">
-                                              {getHours(hour) <10 ? "0"+getHours(hour)+":00" : getHours(hour)+":00"}
-                                            </time>
-                                          </button>
-                                      </div>
-                                  )
-                              })}
+                              {hours.map((hour, hrIndex) => (
+                                <div key={hour.toString()} className={'py-1.5'}>
+                                  <button
+                                    type="button"
+                                    onClick={(e) => {
+                                      const scheduleKey = `${"a"}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`;
+                                      setSchedule(scheduleKey);
+                                      setSelectedHour(scheduleKey)
+                                    }}
+                                    className={classNames(
+                                      "mx-auto flex h-12 w-12 items-center justify-center rounded-full font-normal font-poppins", // default class
+                                      // (haveSchedule && (currentHour < hour)) && 'bg-yellow-400 text-white pointer-events-none', // disable previous date to select
+                                      selectedSchedule.includes(`${"a"}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && 'bg-green-400 text-white', // disable previous date to select
+                                      isSameHour(currentHour,hour) && 'bg-yellow-500 text-white pointer-events-none', // set current date color
+                                      !(currentHour > hour) && !isSameHour(currentHour,hour) && 'hover:bg-gray-300', // hover to normal time item
+                                      !isSameHour(currentHour,hour) && (currentHour > hour) && 'bg-slate-500/50 text-white opacity-70 pointer-events-none', // disable previous date to select
+                                      // ((currentHour < hour) && !haveSchedule || isSameHour(currentHour,hour)) && 'bg-gray-100 hover:bg-gray-300', // hover to normal time item
+                                      // ((currentHour < hour) && || isSameHour(currentHour,hour)) && 'bg-gray-100 hover:bg-gray-300', // hover to normal time item
+                                    )}
+                                  >
+                                    <time dateTime={hour} className="pointer-events-none">
+                                      {getHours(hour) <10 ? "0"+getHours(hour)+":00" : getHours(hour)+":00"}
+                                    </time>
+                                  </button>
+                                </div>
+                              ))}
                             </div>
                         </div>
                         <div className="relative pt-4 w-full flex justify-end">
@@ -209,11 +198,9 @@ const Time = () => {
                     </div>
                   </div>
                 </div>
-                )
-              })}
           </div>
         </div>
-      </>
+      </Fragment>
     );
 }
 

@@ -5,10 +5,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    @apply bg-slate-50;
-}
-
 /* calendar_container */
 .calendar_container{
     @apply w-full relative max-w-4xl mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4;
