@@ -106,15 +106,12 @@ const Time = () => {
 
     function setSchedule(schedule) {
         if(selectedSchedule.includes(schedule)){
-            // console.log("today have schedule");
-            selectedSchedule.splice(selectedSchedule.indexOf(schedule), 1);  //deleting
-            setSelectedSchedule(selectedSchedule);
+          selectedSchedule.splice(selectedSchedule.indexOf(schedule), 1);  //deleting
+          setSelectedSchedule(selectedSchedule);
         }else{
-        //    console.log("today don't  have schedule");
-        selectedSchedule.push(schedule);
-           setSelectedSchedule(selectedSchedule)
+          selectedSchedule.push(schedule);
+          setSelectedSchedule(selectedSchedule)
         }
-        // console.log("selectedSchedule",selectedSchedule);
     }
 
     useEffect(() => {
@@ -128,7 +125,6 @@ const Time = () => {
       console.log(selectedSchedule);
       console.log('====================================');
     }
-
 
     const timeTables = [
       {
@@ -144,6 +140,25 @@ const Time = () => {
         group: "h",
       },
     ]
+
+    const tabs = [
+      {
+        id: "menu",
+        title: "Menu",
+        component: "Menu",
+      },
+      {
+        id: "urlaub",
+        title: "Urlaub/Auszeit",
+        component: "Urlaub/Auszeit",
+      },
+      {
+        id: "pinnwand",
+        title: "Pinnwand",
+        component: "Pinnwand",
+      }
+    ]
+    const [currentTab, setCurrentTab] = useState("menu");
 
     return (
       <Fragment>
@@ -170,59 +185,64 @@ const Time = () => {
             </button>
           </div>
         </div>
-        <div className="relative flex w-full  justify-center items-center">
-            <div className="relative w-full max-w-5xl grid lg:grid-cols-3 md:gird-col-2 grid-cols-1 md:gap-5 gap-3">
-            {timeTables.map((table, tableIndex) => {
-              const doctorSchedule = scheduleJson[table.group];
-              return(
-                <div key={table.group} className="rounded-lg relative w-full bg-white shadow-md border border-gray-400/20 max-w-xs">
-                  <div className={"w-full px-3 py-4 m-0"} >
-                    <div className="md:divide-x md:divide-transparent">
-                        <div className="relative">
-                            <div className="flex items-center">
-                              <div className="my-2 font-semibold font-poppins text-lg w-full text-center leading-4 text-gray-500">
-                                {table.title}
+
+
+        <div className="relative flex justify-between">
+          <div className="relative flex w-full justify-center items-center">
+              <div className="relative w-full max-w-5xl grid lg:grid-cols-3 md:gird-col-2 grid-cols-1 md:gap-5 gap-3">
+              {timeTables.map((table, tableIndex) => {
+                const doctorSchedule = scheduleJson[table.group];
+                return(
+                  <div key={table.group} className="rounded-lg relative w-full bg-white shadow-md border border-gray-400/20 max-w-xs">
+                    <div className={"w-full px-3 py-4 m-0"} >
+                      <div className="md:divide-x md:divide-transparent">
+                          <div className="relative">
+                              <div className="flex items-center">
+                                <div className="my-2 font-semibold font-poppins text-lg w-full text-center leading-4 text-gray-500">
+                                  {table.title}
+                                </div>
                               </div>
-                            </div>
-                            <div className="grid grid-flow-col grid-rows-6 gap-1.5 mt-2 text-sm text-slate-500">
-                              {hours.map((hour, hrIndex) => (
-                                  <button
-                                    key={hrIndex}
-                                    type="button"
-                                    onClick={(e) => {
-                                      const scheduleKey = `${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`;
-                                      setSelectedHour(scheduleKey);
-                                      setSchedule(scheduleKey);
-                                      // setSelectedSchedule(scheduleKey);
-                                    }}
-                                    className={classNames(
-                                      "mx-auto flex h-12 w-12 items-center justify-center rounded-full font-normal font-poppins", // default class
-                                      // (haveSchedule && (currentHour < hour)) && 'bg-yellow-400 text-white pointer-events-none', // disable previous date to select
-                                      selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && 'bg-green-400 text-white', // disable previous date to select
-                                      isSameHour(currentHour,hour) && 'bg-yellow-500 text-white pointer-events-none', // set current date color
-                                      !(currentHour > hour) && !isSameHour(currentHour,hour) && 'hover:bg-gray-300', // hover to normal time item
-                                      !isSameHour(currentHour,hour) && (currentHour > hour) && 'bg-slate-500/50 text-white opacity-70 pointer-events-none', // disable previous date to select
-                                      // ((currentHour < hour) && !haveSchedule || isSameHour(currentHour,hour)) && 'bg-gray-100 hover:bg-gray-300', // hover to normal time item
-                                      // ((currentHour < hour) && || isSameHour(currentHour,hour)) && 'bg-gray-100 hover:bg-gray-300', // hover to normal time item
-                                    )}
-                                  >
-                                    <time dateTime={hour} className="pointer-events-none">
-                                      {getHours(hour) <10 ? "0"+getHours(hour)+":00" : getHours(hour)+":00"}
-                                    </time>
-                                  </button>
-                              ))}
-                            </div>
-                        </div>
-                        <div className="relative pt-4 w-full flex justify-end">
-                          <button
-                          onClick={processSubmit}
-                          className="mr-4 px-3 py-2 font-poppins font-semibold text-sm text-white rounded bg-primary-400">Submit</button>
-                        </div>
+                              <div className="grid grid-flow-col grid-rows-6 gap-1.5 mt-2 text-sm text-white ">
+                                {hours.map((hour, hrIndex) => (
+                                    <button
+                                      key={hrIndex}
+                                      type="button"
+                                      onClick={(e) => {
+                                        const scheduleKey = `${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`;
+                                        setSelectedHour(scheduleKey);
+                                        setSchedule(scheduleKey);
+                                      }}
+                                      className={classNames(
+                                        "mx-auto flex h-12 w-12 items-center justify-center rounded-full font-normal font-poppins", // default class
+                                        (selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && table.group == "a") && 'bg-yellow-600 text-white', // disable previous date to select
+                                        (selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && table.group == "b") && 'bg-yellow-500 text-white', // disable previous date to select
+                                        (selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && table.group == "h") && 'bg-slate-400 text-white', // disable previous date to select
+                                        !(currentHour > hour) && !isSameHour(currentHour,hour) && 'hover:bg-gray-300', // hover to normal time item
+                                        !isSameHour(currentHour,hour) && (currentHour > hour) && 'bg-slate-500/50 text-white opacity-70 pointer-events-none', // disable previous date to select
+                                        ((currentHour <= hour) || isSameHour(currentHour,hour)) && !selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && 'bg-red-400 hover:bg-red-500', // hover to normal time item
+                                      )}
+                                    >
+                                      <time dateTime={hour} className="pointer-events-none">
+                                        {getHours(hour) <10 ? "0"+getHours(hour)+":00" : getHours(hour)+":00"}
+                                      </time>
+                                    </button>
+                                ))}
+                              </div>
+                          </div>
+                          <div className="relative pt-4 w-full flex justify-end">
+                            <button
+                            onClick={processSubmit}
+                            className="mr-4 px-3 py-2 font-poppins font-semibold text-sm text-white rounded bg-primary-400">Submit</button>
+                          </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
+          </div>
+          <div className="relative max-w-xs p-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis eum culpa vel quod magnam aspernatur beatae sint fugit ipsum, quas necessitatibus earum libero similique illum quae consequuntur repudiandae velit voluptatibus!
           </div>
         </div>
       </Fragment>

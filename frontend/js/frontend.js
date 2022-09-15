@@ -3019,16 +3019,13 @@ var Time = function Time() {
 
   function setSchedule(schedule) {
     if (selectedSchedule.includes(schedule)) {
-      // console.log("today have schedule");
       selectedSchedule.splice(selectedSchedule.indexOf(schedule), 1); //deleting
 
       setSelectedSchedule(selectedSchedule);
     } else {
-      //    console.log("today don't  have schedule");
       selectedSchedule.push(schedule);
       setSelectedSchedule(selectedSchedule);
-    } // console.log("selectedSchedule",selectedSchedule);
-
+    }
   }
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -3053,6 +3050,25 @@ var Time = function Time() {
     title: "Bereitschaftszeit H-Dienst",
     group: "h"
   }];
+  var tabs = [{
+    id: "menu",
+    title: "Menu",
+    component: "Menu"
+  }, {
+    id: "urlaub",
+    title: "Urlaub/Auszeit",
+    component: "Urlaub/Auszeit"
+  }, {
+    id: "pinnwand",
+    title: "Pinnwand",
+    component: "Pinnwand"
+  }];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("menu"),
+      _useState10 = _slicedToArray(_useState9, 2),
+      currentTab = _useState10[0],
+      setCurrentTab = _useState10[1];
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "w-full relative flex justify-center items-center text-center",
@@ -3085,66 +3101,71 @@ var Time = function Time() {
           })]
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "relative flex w-full  justify-center items-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "relative w-full max-w-5xl grid lg:grid-cols-3 md:gird-col-2 grid-cols-1 md:gap-5 gap-3",
-        children: timeTables.map(function (table, tableIndex) {
-          var doctorSchedule = _Data__WEBPACK_IMPORTED_MODULE_2__.scheduleJson[table.group];
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "rounded-lg relative w-full bg-white shadow-md border border-gray-400/20 max-w-xs",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-              className: "w-full px-3 py-4 m-0",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                className: "md:divide-x md:divide-transparent",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                  className: "relative",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                    className: "flex items-center",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                      className: "my-2 font-semibold font-poppins text-lg w-full text-center leading-4 text-gray-500",
-                      children: table.title
-                    })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      className: "relative flex justify-between",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "relative flex w-full justify-center items-center",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "relative w-full max-w-5xl grid lg:grid-cols-3 md:gird-col-2 grid-cols-1 md:gap-5 gap-3",
+          children: timeTables.map(function (table, tableIndex) {
+            var doctorSchedule = _Data__WEBPACK_IMPORTED_MODULE_2__.scheduleJson[table.group];
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              className: "rounded-lg relative w-full bg-white shadow-md border border-gray-400/20 max-w-xs",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                className: "w-full px-3 py-4 m-0",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                  className: "md:divide-x md:divide-transparent",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                    className: "relative",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                      className: "flex items-center",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                        className: "my-2 font-semibold font-poppins text-lg w-full text-center leading-4 text-gray-500",
+                        children: table.title
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                      className: "grid grid-flow-col grid-rows-6 gap-1.5 mt-2 text-sm text-white ",
+                      children: hours.map(function (hour, hrIndex) {
+                        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                          type: "button",
+                          onClick: function onClick(e) {
+                            var scheduleKey = "".concat(table.group, "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(hour, "MM-dd-yyyy"), "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(hour));
+                            setSelectedHour(scheduleKey);
+                            setSchedule(scheduleKey);
+                          },
+                          className: classNames("mx-auto flex h-12 w-12 items-center justify-center rounded-full font-normal font-poppins", // default class
+                          selectedSchedule.includes("".concat(table.group, "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(hour, "MM-dd-yyyy"), "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(hour))) && table.group == "a" && 'bg-yellow-600 text-white', // disable previous date to select
+                          selectedSchedule.includes("".concat(table.group, "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(hour, "MM-dd-yyyy"), "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(hour))) && table.group == "b" && 'bg-yellow-500 text-white', // disable previous date to select
+                          selectedSchedule.includes("".concat(table.group, "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(hour, "MM-dd-yyyy"), "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(hour))) && table.group == "h" && 'bg-slate-400 text-white', // disable previous date to select
+                          !(currentHour > hour) && !(0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(currentHour, hour) && 'hover:bg-gray-300', // hover to normal time item
+                          !(0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(currentHour, hour) && currentHour > hour && 'bg-slate-500/50 text-white opacity-70 pointer-events-none', // disable previous date to select
+                          (currentHour <= hour || (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(currentHour, hour)) && !selectedSchedule.includes("".concat(table.group, "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(hour, "MM-dd-yyyy"), "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(hour))) && 'bg-red-400 hover:bg-red-500' // hover to normal time item
+                          ),
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("time", {
+                            dateTime: hour,
+                            className: "pointer-events-none",
+                            children: (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(hour) < 10 ? "0" + (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(hour) + ":00" : (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(hour) + ":00"
+                          })
+                        }, hrIndex);
+                      })
+                    })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                    className: "grid grid-flow-col grid-rows-6 gap-1.5 mt-2 text-sm text-slate-500",
-                    children: hours.map(function (hour, hrIndex) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                        type: "button",
-                        onClick: function onClick(e) {
-                          var scheduleKey = "".concat(table.group, "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(hour, "MM-dd-yyyy"), "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(hour));
-                          setSelectedHour(scheduleKey);
-                          setSchedule(scheduleKey); // setSelectedSchedule(scheduleKey);
-                        },
-                        className: classNames("mx-auto flex h-12 w-12 items-center justify-center rounded-full font-normal font-poppins", // default class
-                        // (haveSchedule && (currentHour < hour)) && 'bg-yellow-400 text-white pointer-events-none', // disable previous date to select
-                        selectedSchedule.includes("".concat(table.group, "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_11__["default"])(hour, "MM-dd-yyyy"), "-").concat((0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(hour))) && 'bg-green-400 text-white', // disable previous date to select
-                        (0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(currentHour, hour) && 'bg-yellow-500 text-white pointer-events-none', // set current date color
-                        !(currentHour > hour) && !(0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(currentHour, hour) && 'hover:bg-gray-300', // hover to normal time item
-                        !(0,date_fns__WEBPACK_IMPORTED_MODULE_14__["default"])(currentHour, hour) && currentHour > hour && 'bg-slate-500/50 text-white opacity-70 pointer-events-none' // disable previous date to select
-                        // ((currentHour < hour) && !haveSchedule || isSameHour(currentHour,hour)) && 'bg-gray-100 hover:bg-gray-300', // hover to normal time item
-                        // ((currentHour < hour) && || isSameHour(currentHour,hour)) && 'bg-gray-100 hover:bg-gray-300', // hover to normal time item
-                        ),
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("time", {
-                          dateTime: hour,
-                          className: "pointer-events-none",
-                          children: (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(hour) < 10 ? "0" + (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(hour) + ":00" : (0,date_fns__WEBPACK_IMPORTED_MODULE_13__["default"])(hour) + ":00"
-                        })
-                      }, hrIndex);
+                    className: "relative pt-4 w-full flex justify-end",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                      onClick: processSubmit,
+                      className: "mr-4 px-3 py-2 font-poppins font-semibold text-sm text-white rounded bg-primary-400",
+                      children: "Submit"
                     })
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                  className: "relative pt-4 w-full flex justify-end",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                    onClick: processSubmit,
-                    className: "mr-4 px-3 py-2 font-poppins font-semibold text-sm text-white rounded bg-primary-400",
-                    children: "Submit"
-                  })
-                })]
+                })
               })
-            })
-          }, table.group);
+            }, table.group);
+          })
         })
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "relative max-w-xs p-3",
+        children: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis eum culpa vel quod magnam aspernatur beatae sint fugit ipsum, quas necessitatibus earum libero similique illum quae consequuntur repudiandae velit voluptatibus!"
+      })]
     })]
   });
 };
