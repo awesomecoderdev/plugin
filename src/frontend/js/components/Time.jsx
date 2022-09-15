@@ -1,7 +1,7 @@
 import React, { Component, Fragment, useState, useEffect } from "react";
 import { Menu, Transition, Tab, Popover, } from "@headlessui/react";
 import { DotsVerticalIcon, PlusCircleIcon } from "@heroicons/react/outline";
-import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
+import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, DocumentDuplicateIcon } from "@heroicons/react/solid";
 import {
     add,
     startOfDay,
@@ -158,27 +158,14 @@ const Time = () => {
         component: "Pinnwand",
       }
     ];
-    const [currentTab, setCurrentTab] = useState("menu");
-    const solutions = [
-      {
-        name: 'Insights',
-        description: 'Measure actions your users take',
-        href: '##',
-        icon: IconOne,
-      },
-      {
-        name: 'Automations',
-        description: 'Create your own targeted content',
-        href: '##',
-        icon: IconTwo,
-      },
-      {
-        name: 'Reports',
-        description: 'Keep track of your growth',
-        href: '##',
-        icon: IconThree,
-      },
-    ]
+
+    const processNeinAction = () => {
+      alert("cancled")
+    }
+
+    const processJaAction = () => {
+      alert("Submited")
+    }
 
     return (
       <Fragment>
@@ -192,7 +179,7 @@ const Time = () => {
               <span className="sr-only">Previous month</span>
               <ChevronLeftIcon className="w-5 h-5" aria-hidden="true" />
             </button>
-            <span className="text-2xl mb-0 text-slate-500 font-poppins font-semibold">
+            <span className="lg:text-2xl md:text-xl text-lg mb-0 text-slate-500 font-poppins font-semibold">
               {format(currentDay, 'd MMMM yyyy')}
             </span>
             <button
@@ -225,9 +212,9 @@ const Time = () => {
                                     <>
                                       <Popover.Button
                                         onClick={processSubmit}
-                                        className={`${open ? '' : 'text-opacity-90'} mr-4 px-3 py-2 font-poppins font-semibold text-sm text-white rounded bg-primary-400`}
+                                        className={`${open ? '' : 'text-opacity-90'} mr-4 p-3 rounded-full font-poppins font-semibold text-sm text-white  bg-primary-400 `}
                                       >
-                                      <PlusCircleIcon className="h-5 w-5" />
+                                        <DocumentDuplicateIcon className="h-4 w-4 " />
                                       </Popover.Button>
                                       <Transition
                                         as={Fragment}
@@ -238,11 +225,11 @@ const Time = () => {
                                         leaveFrom="opacity-100 translate-y-0"
                                         leaveTo="opacity-0 translate-y-1"
                                       >
-                                        <Popover.Panel className="absolute left-1/2 top-0 z-10 mt-3 bg-white w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-md">
-                                          <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 p-3">
+                                        <Popover.Panel className="absolute md:right-[0] -right-1/2 z-10 mt-3  w-screen  transform px-4 sm:px-0 max-w-xs lg:max-w-xs ">
+                                          <div className="overflow-hidden rounded-lg shadow-lg ring-1 bg-white ring-black ring-opacity-5 p-3">
                                             <div className="grid">
                                               <div className="relative w-full">
-                                                <div className="relative">
+                                                <div className="relative font-poppins">
                                                   <span>Tag : {format(today, 'yyyy-MM-dd')}</span>
                                                   <br />
                                                   <span>Tag : {format(today, 'yyyy-MM-dd')}</span>
@@ -250,15 +237,15 @@ const Time = () => {
                                                   <span>Tag : {format(today, 'yyyy-MM-dd')}</span>
                                                   <br />
                                                 </div>
-                                                <select name="" id="">
+                                                <select name="" id="" className="text-sm font-semibold font-poppins my-2">
                                                   <option value="">Demo 1</option>
                                                   <option value="">Demo 2</option>
                                                 </select>
                                               </div>
                                               <div className="relative w-full">
                                                 <div className="flex justify-end">
-                                                  <button className="text-sm font-semibold font-poppins text-gray-500 px-2 py-1 mx-1 bg-red-400">Ja</button>
-                                                  <button className="text-sm font-semibold font-poppins text-gray-500 px-2 py-1 mx-1 bg-primary-400">Nein</button>
+                                                  <button onClick={processNeinAction} className="text-sm font-semibold font-poppins text-white px-2 py-1 mx-1 bg-red-400">Nein</button>
+                                                  <button onClick={processJaAction} className="text-sm font-semibold font-poppins text-white px-2 py-1 mx-1 bg-primary-400">Ja</button>
                                                 </div>
                                               </div>
                                             </div>
