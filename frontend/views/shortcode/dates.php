@@ -16,6 +16,4 @@ if (isset($_GET["start"]) && !empty($_GET["start"])) {
     }
 </script>
 
-<div class="relative w-full">
-    <div id="timeTableDates"></div>
-</div>
+<div id="timeTableDates"></div>

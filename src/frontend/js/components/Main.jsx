@@ -39,7 +39,7 @@ const Main = () => {
                     </div>
                 ))}
               <div className="calendar_list_item">
-                <div className="relative">
+                <div className="p_relative">
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempore, necessitatibus ab a illum, excepturi magni voluptatum ex alias, soluta voluptates libero minus natus dignissimos vitae! Odio asperiores dolorum maxime?</p>
                 </div>
               </div>

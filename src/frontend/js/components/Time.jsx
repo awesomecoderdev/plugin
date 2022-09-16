@@ -169,67 +169,65 @@ const Time = () => {
 
     return (
       <Fragment>
-        <div className="w-full relative flex justify-center items-center text-center">
-          <div className="max-w-sm w-full py-4 flex justify-between items-center">
+        <div className="hours_container">
+          <div className="hours_header_wraper">
             <button
               type="button"
               onClick={previousDay}
-              className="-my-1.5 flex flex-none items-center justify-center p-1.5 hover:bg-gray-200 bg-gray-300/50 rounded-full text-gray-500 hover:text-gray-600"
+              className="go_next_prev_hr"
             >
-              <span className="sr-only">Previous month</span>
-              <ChevronLeftIcon className="w-5 h-5" aria-hidden="true" />
+              <ChevronLeftIcon className="go_next_prev_hr_icon " aria-hidden="true" />
             </button>
-            <span className="lg:text-2xl md:text-xl text-lg mb-0 text-slate-500 font-poppins font-semibold">
+            <span className="current_hr_text">
               {format(currentDay, 'd MMMM yyyy')}
             </span>
             <button
               onClick={nextDay}
               type="button"
-              className="-my-1.5 flex flex-none items-center justify-center p-1.5 hover:bg-gray-200 bg-gray-300/50 rounded-full text-gray-500 hover:text-gray-600"
+              className="go_next_prev_hr"
             >
-              <span className="sr-only">Next month</span>
-              <ChevronRightIcon className="w-5 h-5" aria-hidden="true" />
+              <ChevronRightIcon className="go_next_prev_hr_icon" aria-hidden="true" />
             </button>
           </div>
         </div>
-          <div className="relative flex w-full justify-center items-center">
-              <div className="relative w-full max-w-7xl grid lg:grid-cols-4 md:gird-col-2 sm:grid-cols-2 lg:gap-5 md:gap-3 gap-3">
+          <div className="hours_wraper">
+              <div className="hr_container">
               {timeTables.map((table, tableIndex) => {
                 const doctorSchedule = scheduleJson[table.group];
 
                 return(
-                  <div key={table.group} className="rounded-lg relative w-full bg-white shadow-md border border-gray-400/20 lg:max-w-xs max-w-full">
-                    <div className={"w-full px-3 py-4 m-0"} >
-                      <div className="md:divide-x md:divide-transparent">
-                          <div className="relative">
-                              <div className="flex items-center">
-                                <div className="my-2 font-semibold font-poppins text-sm w-full text-start leading-4 text-gray-500">
+                  <div key={table.group} className="hr_card_item">
+                    <div className={"hr_card_content"} >
+                      <div className="hr_card_body">
+                          <div className="relative_card">
+                              <div className="hr_card_header">
+                                <div className="hr_card_title">
                                   {table.title}
                                 </div>
-                                <div className="relative w-auto ">
-                                <Popover className="relative">
+                                <div className="hr_card_save ">
+                                <Popover className="relative_card">
                                   {({ open }) => (
                                     <>
                                       <Popover.Button
                                         onClick={processSubmit}
-                                        className={`${open ? '' : 'text-opacity-90'} mr-4 p-3 rounded-full font-poppins font-semibold text-sm text-white  bg-primary-400 `}
+                                        className={`${open ? '' : 'inactive'} hr_card_save_btn `}
                                       >
-                                        <DocumentDuplicateIcon className="h-4 w-4 " />
+                                        <DocumentDuplicateIcon className="icon_4 " />
                                       </Popover.Button>
                                       <Transition
                                         as={Fragment}
-                                        enter="transition ease-out duration-200"
-                                        enterFrom="opacity-0 translate-y-1"
-                                        enterTo="opacity-100 translate-y-0"
-                                        leave="transition ease-in duration-150"
-                                        leaveFrom="opacity-100 translate-y-0"
-                                        leaveTo="opacity-0 translate-y-1"
+                                        enter="hr_popup_enter"
+                                        enterFrom="hr_popup_enterFrom"
+                                        enterTo="hr_popup_enterTo"
+                                        leave="hr_popup_leave"
+                                        leaveFrom="hr_popup_leaveFrom"
+                                        leaveTo="hr_popup_leaveTo"
                                       >
-                                        <Popover.Panel className="absolute md:right-[0] -right-1/2 z-10 mt-3  w-screen  transform px-4 sm:px-0 max-w-xs lg:max-w-xs ">
-                                          <div className="overflow-hidden rounded-lg shadow-lg ring-1 bg-white ring-black ring-opacity-5 p-3">
-                                            <div className="grid">
-                                              <div className="relative w-full">
-                                                <div className="relative font-poppins">
+                                        <Popover.Panel className="hr_submit_popup">
+                                          <div className="hr_popup_container">
+                                            <div className="hr_popup_card">
+                                              <div className="hr_popup_content">
+                                                <div className="hr_popup_text">
                                                   <span>Tag : {format(today, 'yyyy-MM-dd')}</span>
                                                   <br />
                                                   <span>Tag : {format(today, 'yyyy-MM-dd')}</span>
@@ -237,15 +235,15 @@ const Time = () => {
                                                   <span>Tag : {format(today, 'yyyy-MM-dd')}</span>
                                                   <br />
                                                 </div>
-                                                <select name="" id="" className="text-sm font-semibold font-poppins my-2">
+                                                <select name="" id="" className="hr_popup_select">
                                                   <option value="">Demo 1</option>
                                                   <option value="">Demo 2</option>
                                                 </select>
                                               </div>
-                                              <div className="relative w-full">
-                                                <div className="flex justify-end">
-                                                  <button onClick={processNeinAction} className="text-sm font-semibold font-poppins text-white px-2 py-1 mx-1 bg-red-400">Nein</button>
-                                                  <button onClick={processJaAction} className="text-sm font-semibold font-poppins text-white px-2 py-1 mx-1 bg-primary-400">Ja</button>
+                                              <div className="hr_popup_footer_container">
+                                                <div className="hr_footer_btns">
+                                                  <button onClick={processNeinAction} className="hr_popup_cancel_btn">Nein</button>
+                                                  <button onClick={processJaAction} className="hr_popup_ok_btn">Ja</button>
                                                 </div>
                                               </div>
                                             </div>
@@ -257,7 +255,7 @@ const Time = () => {
                                 </Popover>
                           </div>
                               </div>
-                              <div className="grid grid-flow-col grid-rows-6 gap-1.5 mt-2 text-sm text-white ">
+                              <div className="hr_btns_container">
                                 {hours.map((hour, hrIndex) =>{
                                   var haveSchedule = false;
                                   doctorSchedule.filter(hr => {
@@ -279,19 +277,19 @@ const Time = () => {
                                         setSchedule(scheduleKey);
                                       }}
                                       className={classNames(
-                                        "mx-auto flex h-12 w-12 items-center justify-center rounded-full font-normal font-poppins", // default class
-                                        (selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && table.group == "a") && 'bg-yellow-600 text-white', // disable previous date to select
-                                        (selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && table.group == "b") && 'bg-yellow-500 text-white', // disable previous date to select
-                                        (selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && table.group == "h") && 'bg-slate-400 text-white', // disable previous date to select
-                                        (haveSchedule && table.group == "a" ) && 'bg-yellow-600 text-white',
-                                        (haveSchedule && table.group == "b" ) && 'bg-yellow-500 text-white',
-                                        (haveSchedule && table.group == "h" ) && 'bg-slate-400 text-white',
-                                        !(currentHour > hour) && !isSameHour(currentHour,hour) && 'hover:bg-gray-300', // hover to normal time item
-                                        !isSameHour(currentHour,hour) && (currentHour > hour) && 'bg-slate-500/50 text-white opacity-70 pointer-events-none', // disable previous date to select
-                                        ((currentHour <= hour) || isSameHour(currentHour,hour)) && !haveSchedule && !selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && 'bg-red-400 hover:bg-red-500', // hover to normal time item
+                                        "hr_time_btn", // default class
+                                        (selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && table.group == "a") && 'a_selected', // disable previous date to select
+                                        (selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && table.group == "b") && 'b_selected', // disable previous date to select
+                                        (selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && table.group == "h") && 'h_selected', // disable previous date to select
+                                        (haveSchedule && table.group == "a" ) && 'a',
+                                        (haveSchedule && table.group == "b" ) && 'b',
+                                        (haveSchedule && table.group == "h" ) && 'h',
+                                        // !(currentHour > hour) && !isSameHour(currentHour,hour) && 'hover:bg-gray-300', // hover to normal time item
+                                        !isSameHour(currentHour,hour) && (currentHour > hour) && 'disabled', // disable previous date to select
+                                        ((currentHour <= hour) || isSameHour(currentHour,hour)) && !haveSchedule && !selectedSchedule.includes(`${table.group}-${format(hour,"MM-dd-yyyy")}-${getHours(hour)}`) && 'normal', // hover to normal time item
                                       )}
                                     >
-                                      <time dateTime={hour} className="pointer-events-none">
+                                      <time dateTime={hour} className="hr_time">
                                         {getHours(hour) <10 ? "0"+getHours(hour)+":00" : getHours(hour)+":00"}
                                       </time>
                                     </button>
@@ -304,20 +302,19 @@ const Time = () => {
                   </div>
                 )
               })}
-              <div className="rounded-lg relative w-full bg-white shadow-md border border-gray-400/20  lg:max-w-xs max-w-full">
-                <div className={"w-full px-3 py-4 m-0"} >
+              <div className="hr_card_item">
+                <div className={"hr_tabs"} >
                   <Tab.Group>
-                        <Tab.List className="flex justify-between bg-white overflow-x-auto overflow-y-hidden">
+                        <Tab.List className="hr_tab_header">
                           {tabs.map((tab) => (
                             <Tab
                               key={tab.id}
                               className={({ selected }) =>
                                 classNames(
-                                  'text-sm font-poppins bg-slate-50  px-2 py-1 hover:bg-white',
-                                  // 'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
+                                  'hr_tab_btn',
                                   selected
-                                    ? 'bg-gray-300/50 border shadow-lg text-gray-500  hover:text-gray-600 border-slate-500/10'
-                                    : 'text-gray-500 hover:text-gray-600 border border-gray-500/10'
+                                  ? 'selected'
+                                  : 'normal'
                                 )
                               }
                             >
@@ -325,11 +322,10 @@ const Time = () => {
                             </Tab>
                           ))}
                         </Tab.List>
-                        <Tab.Panels className="mt-2">
+                        <Tab.Panels className="hr_tab_body">
                           {tabs.map((tab, idx) => (
                             <Tab.Panel
                               key={idx}
-                              className={"p-2"}
                             >
                               {tab.component}
                             </Tab.Panel>

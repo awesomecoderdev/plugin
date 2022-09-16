@@ -11,9 +11,7 @@ function App() {
 
   return (
     <Fragment>
-      <div className="m-5">
-        {showTimeTable ? <Time /> : <Main />}
-      </div>
+      {showTimeTable ? <Time /> : <Main />}
     </Fragment>
   );
 }

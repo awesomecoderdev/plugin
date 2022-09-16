@@ -38,13 +38,17 @@ const Calendar = ({className, startMonth}) => {
     const today = startOfToday();
     const [selectedDay, setSelectedDay] = useState(today)
     const [currentMonth, setCurrentMonth] =  useState(
-        startMonth ? format(startMonth, 'MMM-yyyy') : format(today, 'MMM-yyyy')
-      )
+      startMonth ? format(startMonth, 'MMM-yyyy') : format(today, 'MMM-yyyy')
+    )
     const firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date())
     const days = eachDayOfInterval({
       start: startOfWeek(firstDayCurrentMonth),
       end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
     })
+    // const days = eachDayOfInterval({
+    //   start: firstDayCurrentMonth,
+    //   end: endOfMonth(firstDayCurrentMonth),
+    // })
     function previousMonth() {
       const firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 })
       setCurrentMonth(format(firstDayNextMonth, 'MMM-yyyy'))
