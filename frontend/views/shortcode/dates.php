@@ -10,10 +10,6 @@ if (isset($_GET["start"]) && !empty($_GET["start"])) {
 <script>
     const showTimeTable = <?php echo isset($_GET["start"]) && !empty($_GET["start"]) ? "true" : "false"; ?>;
     const startFrom = "<?php echo $date; ?>";
-    const timeTableDates = {
-        name: "Ibrahim",
-        email: "awesomecoder.dev@gmail.com"
-    }
 </script>
 
 <div id="timeTableDates"></div>

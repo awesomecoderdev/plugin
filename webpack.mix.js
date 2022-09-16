@@ -24,11 +24,11 @@ mix
   //   require("tailwindcss"),
   //   require("autoprefixer"),
   // ])
-  .postCss("src/frontend/css/frontend.css", "frontend/css", [
-    require("postcss-import"),
-    require("tailwindcss"),
-    require("autoprefixer"),
-  ])
+  // .postCss("src/frontend/css/frontend.css", "frontend/css", [
+  //   require("postcss-import"),
+  //   require("tailwindcss"),
+  //   require("autoprefixer"),
+  // ])
   .js("src/frontend/js/frontend.js", "frontend/js")
   .react()
   .sourceMaps(false, "source-map")

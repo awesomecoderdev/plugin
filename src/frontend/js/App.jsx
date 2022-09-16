@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
-import Main from './components/Main';
 import Timetable from './components/Timetable';
 import Time from './components/Time';
+import Calendar from './components/Calendar';
 
 // console.log("showTimeTable",showTimeTable);
 
@@ -11,7 +11,7 @@ function App() {
 
   return (
     <Fragment>
-      {showTimeTable ? <Time /> : <Main />}
+      {showTimeTable ? <Time /> : <Calendar />}
     </Fragment>
   );
 }
