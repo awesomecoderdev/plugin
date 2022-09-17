@@ -280,7 +280,14 @@ svg{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
+  margin: 2rem 0;
 }
+@media (max-width: 1024px){
+  .hours_wraper{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
 .hours_header_wraper{
   display: flex;
   width: 100%;
@@ -371,6 +378,13 @@ svg{
     gap: 0.5rem;
 
 }
+
+@media (max-width: 425px){
+  .hr_container{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
 .hr_card_item{
   position: relative;
   width: 100%;
@@ -385,6 +399,16 @@ svg{
   .hr_card_item{
     max-width: 20rem;
   }
+}
+.hr_tab_item{
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  border-color: rgb(156 163 175 / 0.2);
+  background-color: rgb(255 255 255 / 1);
+  box-shadow:  0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 .hr_card_content{
   margin: 0px;

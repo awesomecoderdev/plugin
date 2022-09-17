@@ -61,15 +61,6 @@ const Time = () => {
     end: endOfWeek(today),
   });
 
-  console.log("====================================");
-  console.log("currentWeek", currentWeek);
-  console.log("====================================");
-
-  // const hours = eachHourOfInterval({
-  //   start: startOfDay(currentDay),
-  //   end: endOfDay(currentDay),
-  // })
-
   // process got to prev day ->done
   const previousDay = () => {
     const goToPrivDay = add(currentDay, { days: -1 });
@@ -104,18 +95,6 @@ const Time = () => {
   };
 
   const timeTables = [
-    {
-      title: "Bereitschaftszeit A-Dienst",
-      group: "a",
-    },
-    {
-      title: "Bereitschaftszeit B-Dienst",
-      group: "b",
-    },
-    {
-      title: "Bereitschaftszeit H-Dienst",
-      group: "h",
-    },
     // {
     //   title: "Bereitschaftszeit A-Dienst",
     //   group: "a",
@@ -128,6 +107,18 @@ const Time = () => {
     //   title: "Bereitschaftszeit H-Dienst",
     //   group: "h",
     // },
+    {
+      title: "A-Dienst",
+      group: "a",
+    },
+    {
+      title: "B-Dienst",
+      group: "b",
+    },
+    {
+      title: "H-Dienst",
+      group: "h",
+    },
   ];
 
   const tabs = [
@@ -201,7 +192,7 @@ const Time = () => {
                         <div className="relative_card">
                           <div className="hr_card_header">
                             <div className="hr_card_title">{table.title}</div>
-                            <div className="hr_card_save ">
+                            {/* <div className="hr_card_save ">
                               <Popover className="relative_card">
                                 {({ open }) => (
                                   <>
@@ -275,7 +266,7 @@ const Time = () => {
                                   </>
                                 )}
                               </Popover>
-                            </div>
+                            </div> */}
                           </div>
                           <div className="hr_btns_container">
                             {hours.map((hour, hrIndex) => {
@@ -362,43 +353,47 @@ const Time = () => {
                   </div>
                 );
               })}
-              {/* start the tab */}
-              {/* <div className="hr_card_item">
-                  <div className={"hr_tabs"} >
-                    <Tab.Group>
-                          <Tab.List className="hr_tab_header">
-                            {tabs.map((tab) => (
-                              <Tab
-                                key={tab.id}
-                                className={({ selected }) =>
-                                  classNames(
-                                    'hr_tab_btn',
-                                    selected
-                                    ? 'selected'
-                                    : 'normal'
-                                  )
-                                }
-                              >
-                                {tab.title}
-                              </Tab>
-                            ))}
-                          </Tab.List>
-                          <Tab.Panels className="hr_tab_body">
-                            {tabs.map((tab, idx) => (
-                              <Tab.Panel
-                                key={idx}
-                              >
-                                {tab.component}
-                              </Tab.Panel>
-                            ))}
-                          </Tab.Panels>
-                        </Tab.Group>
-                    </div>
-                </div> */}
+
             </div>
             </div>
           );
         })}
+
+        {/* start the tab */}
+        <div className="hour_group">
+          <div className="hr_tab_item">
+            <div className={"hr_tabs"} >
+              <Tab.Group>
+                    <Tab.List className="hr_tab_header">
+                      {tabs.map((tab) => (
+                        <Tab
+                          key={tab.id}
+                          className={({ selected }) =>
+                            classNames(
+                              'hr_tab_btn',
+                              selected
+                              ? 'selected'
+                              : 'normal'
+                            )
+                          }
+                        >
+                          {tab.title}
+                        </Tab>
+                      ))}
+                    </Tab.List>
+                    <Tab.Panels className="hr_tab_body">
+                      {tabs.map((tab, idx) => (
+                        <Tab.Panel
+                          key={idx}
+                        >
+                          {tab.component}
+                        </Tab.Panel>
+                      ))}
+                    </Tab.Panels>
+                  </Tab.Group>
+              </div>
+            </div>
+        </div>
       </div>
     </Fragment>
   );
